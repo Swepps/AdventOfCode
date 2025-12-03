@@ -20,6 +20,18 @@ namespace AdventOfCode
             return File.ReadAllText(path);
         }
 
+        public static string LoadExample(int year, int day)
+        {
+            var root = cachedRoot ??= FindProjectRoot();
+
+            var path = Path.Combine(root, "Inputs", year.ToString(), $"Day{day} - Example.txt");
+
+            if (!File.Exists(path))
+                return "";
+
+            return File.ReadAllText(path);
+        }
+
         private static string FindProjectRoot()
         {
             var startDir =

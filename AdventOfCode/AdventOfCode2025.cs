@@ -20,10 +20,23 @@ namespace AdventOfCode
             output.WriteLine($"Day {day}, 2025\n-----------");
 
             string input = InputLoader.Load(2025, day);
+            string exampleInput = InputLoader.LoadExample(2025, day);
+
+            if (!string.IsNullOrEmpty(exampleInput))
+            {
+                T p1Example = part1(exampleInput);
+                output.WriteLine($"Part 1 Example Result: {p1Example}\n");
+            }
 
             T p1 = part1(input);
             Assert.True(p1 > T.Zero, $"Part 1 result must be > 0 but was {p1}");
             output.WriteLine($"Part 1 Result: {p1}\n");
+
+            if (!string.IsNullOrEmpty(exampleInput))
+            {
+                T p2Example = part2(exampleInput);
+                output.WriteLine($"Part 2 Example Result: {p2Example}\n");
+            }
 
             T p2 = part2(input);
             Assert.True(p2 > T.Zero, $"Part 2 result must be > 0 but was {p2}");
@@ -40,6 +53,12 @@ namespace AdventOfCode
         public void Day2_Gift_Shop()
         {
             RunDay(2, GiftShop.Part1, GiftShop.Part2);
+        }
+
+        [Fact]
+        public void Day3_Lobby()
+        {
+            RunDay(3, Lobby.Part1, Lobby.Part2);
         }
     }
 }
