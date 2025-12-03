@@ -19,7 +19,7 @@ namespace AdventOfCode
         {
             output.WriteLine($"Day {day}, 2024\n-----------");
 
-            string input = InputLoader.Load(2025, day);
+            string input = InputLoader.Load(2024, day);
 
             uint p1 = part1(input);
             Assert.True(p1 > 0);
@@ -39,13 +39,13 @@ namespace AdventOfCode
         [Fact]
         public void Day2_Red_Nosed_Reports()
         {
-            RunDay(1, RedNosedReports.Part1, RedNosedReports.Part2);
+            RunDay(2, RedNosedReports.Part1, RedNosedReports.Part2);
         }
 
         [Fact]
         public void Day3_Mull_It_Over()
         {
-            RunDay(1, MullItOver.Part1, MullItOver.Part2);
+            RunDay(3, MullItOver.Part1, MullItOver.Part2);
         }
     }
 }

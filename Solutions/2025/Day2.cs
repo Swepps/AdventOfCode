@@ -10,8 +10,6 @@ namespace Solutions.Year2025
 {
     public partial class GiftShop
     {
-        private static int Mod(int a, int n) => ((a % n) + n) % n;
-
         [GeneratedRegex(@"(\d+)-(\d+),")]
         public static partial Regex SplitProductIdsRegex();
 
