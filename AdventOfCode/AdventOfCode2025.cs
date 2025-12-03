@@ -14,18 +14,19 @@ namespace AdventOfCode
     {
         private readonly ITestOutputHelper output = output;
 
-        private void RunDay(int day, Func<string, int> part1, Func<string, int> part2)
+        private void RunDay<T>(int day, Func<string, T> part1, Func<string, T> part2)
+            where T : System.Numerics.INumber<T>
         {
             output.WriteLine($"Day {day}, 2025\n-----------");
 
             string input = InputLoader.Load(2025, day);
 
-            int p1 = part1(input);
-            Assert.True(p1 > 0);
+            T p1 = part1(input);
+            Assert.True(p1 > T.Zero, $"Part 1 result must be > 0 but was {p1}");
             output.WriteLine($"Part 1 Result: {p1}\n");
 
-            int p2 = part2(input);
-            Assert.True(p2 > 0);
+            T p2 = part2(input);
+            Assert.True(p2 > T.Zero, $"Part 2 result must be > 0 but was {p2}");
             output.WriteLine($"Part 2 Result: {p2}\n");
         }
 
