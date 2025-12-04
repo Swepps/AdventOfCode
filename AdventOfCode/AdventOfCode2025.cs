@@ -60,5 +60,11 @@ namespace AdventOfCode
         {
             RunDay(3, Lobby.Part1, Lobby.Part2);
         }
+
+        [Fact]
+        public void Day4_Printing_Department()
+        {
+            RunDay(4, PrintingDepartment.Part1, PrintingDepartment.Part2);
+        }
     }
 }
