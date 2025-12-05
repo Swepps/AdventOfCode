@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,22 +26,36 @@ namespace AdventOfCode
             if (!string.IsNullOrEmpty(exampleInput))
             {
                 T p1Example = part1(exampleInput);
-                output.WriteLine($"Part 1 Example Result: {p1Example}\n");
+                output.WriteLine($"Part 1 Example Result: {p1Example}");
             }
 
+            Stopwatch sw = new();
+
+            sw.Start();
             T p1 = part1(input);
+            sw.Stop();
+
             Assert.True(p1 > T.Zero, $"Part 1 result must be > 0 but was {p1}");
-            output.WriteLine($"Part 1 Result: {p1}\n");
+            output.WriteLine(
+                $"Part 1 Result: {p1}\nTime Elapsed: {sw.Elapsed.TotalMilliseconds}\n"
+            );
+            sw.Reset();
 
             if (!string.IsNullOrEmpty(exampleInput))
             {
                 T p2Example = part2(exampleInput);
-                output.WriteLine($"Part 2 Example Result: {p2Example}\n");
+                output.WriteLine($"Part 2 Example Result: {p2Example}");
             }
 
+            sw.Start();
             T p2 = part2(input);
+            sw.Stop();
+
             Assert.True(p2 > T.Zero, $"Part 2 result must be > 0 but was {p2}");
-            output.WriteLine($"Part 2 Result: {p2}\n");
+            output.WriteLine(
+                $"Part 2 Result: {p2}\nTime Elapsed: {sw.Elapsed.TotalMilliseconds}\n"
+            );
+            sw.Reset();
         }
 
         [Fact]
@@ -65,6 +80,12 @@ namespace AdventOfCode
         public void Day4_Printing_Department()
         {
             RunDay(4, PrintingDepartment.Part1, PrintingDepartment.Part2);
+        }
+
+        [Fact]
+        public void Day4_Printing_Department_Optimised()
+        {
+            RunDay(4, PrintingDepartment.Part1, PrintingDepartment.Part2Optimised);
         }
     }
 }

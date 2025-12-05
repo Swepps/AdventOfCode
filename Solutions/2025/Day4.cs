@@ -16,6 +16,8 @@ namespace Solutions.Year2025
             {
                 private readonly Cell?[] _neighbours = new Cell[8];
 
+                public IEnumerable<Cell?> Neighbours => _neighbours.AsEnumerable();
+
                 public bool HasRoll;
                 public Cell? North
                 {
@@ -155,6 +157,51 @@ namespace Solutions.Year2025
                 }
                 return count;
             }
+
+            public long RemoveAllRollsWithFewerAdj_Optimised(int n)
+            {
+                long count = 0;
+
+                Stack<Cell> cellsToCheck = [];
+
+                // first pass to find all rolls we can immediately delete
+                foreach (var row in _grid)
+                {
+                    foreach (Cell cell in row)
+                    {
+                        if (cell.HasRoll && cell.CountAdjacentRolls() < n)
+                        {
+                            cellsToCheck.Push(cell);
+                            count++;
+                            cell.HasRoll = false;
+                        }
+                    }
+                }
+
+                while (cellsToCheck.Count > 0)
+                {
+                    Cell cell = cellsToCheck.Pop();
+                    if (cell.HasRoll)
+                    {
+                        count++;
+                        cell.HasRoll = false;
+                    }
+
+                    foreach (Cell? neighbour in cell.Neighbours)
+                    {
+                        if (
+                            neighbour is not null
+                            && neighbour.HasRoll
+                            && neighbour.CountAdjacentRolls() < n
+                        )
+                        {
+                            cellsToCheck.Push(neighbour);
+                        }
+                    }
+                }
+
+                return count;
+            }
         }
 
         public static long Part1(string input)
@@ -193,6 +240,19 @@ namespace Solutions.Year2025
                 numberOfRollsRemoved += rollsRemovedLastPass;
             }
             return numberOfRollsRemoved;
+        }
+
+        public static long Part2Optimised(string input)
+        {
+            PaperGrid paperGrid = new();
+
+            foreach (string line in input.Split('\n'))
+            {
+                paperGrid.AddRow(line);
+            }
+
+            const int numAdjacentRollsTooMany = 4;
+            return paperGrid.RemoveAllRollsWithFewerAdj_Optimised(numAdjacentRollsTooMany);
         }
     }
 }
