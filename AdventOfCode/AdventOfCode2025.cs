@@ -87,5 +87,11 @@ namespace AdventOfCode
         {
             RunDay(4, PrintingDepartment.Part1, PrintingDepartment.Part2Optimised);
         }
+
+        [Fact]
+        public void Day5_Cafeteria()
+        {
+            RunDay(5, Cafeteria.Part1, Cafeteria.Part2);
+        }
     }
 }
