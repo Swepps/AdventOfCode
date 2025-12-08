@@ -93,5 +93,11 @@ namespace AdventOfCode
         {
             RunDay(5, Cafeteria.Part1, Cafeteria.Part2);
         }
+
+        [Fact]
+        public void Day6_Trash_Compactor()
+        {
+            RunDay(6, TrashCompactor.Part1, TrashCompactor.Part2);
+        }
     }
 }
