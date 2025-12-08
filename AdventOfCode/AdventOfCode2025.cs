@@ -99,5 +99,11 @@ namespace AdventOfCode
         {
             RunDay(6, TrashCompactor.Part1, TrashCompactor.Part2);
         }
+
+        [Fact]
+        public void Day7_Laboratories()
+        {
+            RunDay(7, Laboratories.Part1, Laboratories.Part2);
+        }
     }
 }
