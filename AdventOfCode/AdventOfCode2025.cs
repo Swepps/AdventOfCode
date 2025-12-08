@@ -105,5 +105,11 @@ namespace AdventOfCode
         {
             RunDay(7, Laboratories.Part1, Laboratories.Part2);
         }
+
+        [Fact]
+        public void Day8_Playground()
+        {
+            RunDay(8, Playground.Part1, Playground.Part2);
+        }
     }
 }
