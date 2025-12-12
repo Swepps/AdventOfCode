@@ -111,5 +111,11 @@ namespace AdventOfCode
         {
             RunDay(8, Playground.Part1, Playground.Part2);
         }
+
+        [Fact]
+        public void Day9_Movie_Theater()
+        {
+            RunDay(9, MovieTheater.Part1, MovieTheater.Part2);
+        }
     }
 }
